@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3L0DG2NNN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3L0DG2NNN');
+  </script>
+
+  <script>
+    const telegramUrl = "https://t.me/nronagent";
+
+    function redirectToTelegram() {
+      // отправляем событие в GA
+      gtag('event', 'redirect_to_telegram', {
+        event_category: 'QR',
+        event_label: 'nronagent',
+        transport_type: 'beacon'
+      });
+
+      // небольшая задержка чтобы GA точно отправил событие
+      setTimeout(function() {
+        window.location.href = telegramUrl;
+      }, 150);
+    }
+
+    window.onload = redirectToTelegram;
+  </script>
+
+</head>
+<body>
+  <p>Redirecting to Telegram...</p>
+</body>
+</html>
