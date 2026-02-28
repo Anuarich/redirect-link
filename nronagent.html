@@ -1,23 +1,45 @@
-<script>
-const tgApp = "tg://resolve?domain=nronagent";
-const tgWeb = "https://t.me/nronagent";
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
 
-function redirect() {
-  // отправляем событие в GA
-  gtag('event', 'redirect_to_telegram', {
-    event_category: 'QR',
-    event_label: 'nronagent',
-    transport_type: 'beacon'
-  });
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3L0DG2NNN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3L0DG2NNN');
+  </script>
 
-  // пробуем открыть приложение
-  window.location = tgApp;
+  <script>
+    const tgApp = "tg://resolve?domain=nronagent";
+    const tgWeb = "https://t.me/nronagent";
 
-  // если не открылось — fallback на веб
-  setTimeout(function() {
-    window.location = tgWeb;
-  }, 1200);
-}
+    function openTelegram() {
 
-window.onload = redirect;
-</script>
+      // фиксируем событие
+      gtag('event', 'redirect_to_telegram', {
+        event_category: 'QR',
+        event_label: 'nronagent',
+        transport_type: 'beacon'
+      });
+
+      // пробуем открыть приложение
+      window.location.href = tgApp;
+
+      // если приложение не открылось — fallback
+      setTimeout(function() {
+        window.location.href = tgWeb;
+      }, 1500);
+    }
+
+    window.onload = openTelegram;
+  </script>
+</head>
+
+<body>
+  <p>Redirecting to Telegram...</p>
+</body>
+</html>
