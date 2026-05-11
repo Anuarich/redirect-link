@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting to WhatsApp...</title>
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3L0DG2NNN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W3L0DG2NNN');
+  </script>
+
+  <script>
+    // Твой тайский номер в международном формате
+    const phone = "66989909550"; 
+    
+    const waApp = "whatsapp://send?phone=" + phone;
+    const waWeb = "https://wa.me/" + phone;
+
+    function openWhatsApp() {
+      // Фиксируем событие
+      gtag('event', 'redirect_to_whatsapp', {
+        event_category: 'QR',
+        event_label: 'thai_number_098',
+        transport_type: 'beacon'
+      });
+
+      // Пробуем открыть приложение
+      window.location.href = waApp;
+
+      // Fallback на браузерную версию
+      setTimeout(function() {
+        window.location.href = waWeb;
+      }, 1500);
+    }
+
+    window.onload = openWhatsApp;
+  </script>
+</head>
+<body>
+  <p>Перенаправляем в WhatsApp (Thailand)...</p>
+</body>
+</html>
