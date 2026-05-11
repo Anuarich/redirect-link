@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Redirecting to WhatsApp...</title>
@@ -13,24 +13,24 @@
   </script>
 
   <script>
-    // Твой тайский номер в международном формате
+    // Thai phone number in international format
     const phone = "66989909550"; 
     
     const waApp = "whatsapp://send?phone=" + phone;
     const waWeb = "https://wa.me/" + phone;
 
     function openWhatsApp() {
-      // Фиксируем событие
+      // Event tracking
       gtag('event', 'redirect_to_whatsapp', {
         event_category: 'QR',
         event_label: 'thai_number_098',
         transport_type: 'beacon'
       });
 
-      // Пробуем открыть приложение
+      // Try to open WhatsApp app directly
       window.location.href = waApp;
 
-      // Fallback на браузерную версию
+      // Fallback to web version if app doesn't open
       setTimeout(function() {
         window.location.href = waWeb;
       }, 1500);
@@ -40,6 +40,6 @@
   </script>
 </head>
 <body>
-  <p>Перенаправляем в WhatsApp (Thailand)...</p>
+  <p>Redirecting to WhatsApp...</p>
 </body>
 </html>
